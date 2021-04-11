@@ -75,7 +75,7 @@ namespace ttt {
         Board  m_board;
 
     public:
-        State(): m_board(), m_n_moves() {}
+        State(): m_n_moves(), m_board() {}
 
         auto n_moves() const -> int { return m_n_moves; }
         
