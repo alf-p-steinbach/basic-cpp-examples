@@ -1,4 +1,4 @@
-#ifdef __MINGW32__
+﻿#ifdef __MINGW32__
 #   if __GNUC__ < 10 && !defined( _GLIBCXX_USE_RANDOM_TR1 )
 #       // With MinGW and no _GLIBCXX_USE_RANDOM_TR1 one risks getting the same sequence always.
 #       pragma GCC warning "_GLIBCXX_USE_RANDOM_TR1 should be defined for use of std::random_device"

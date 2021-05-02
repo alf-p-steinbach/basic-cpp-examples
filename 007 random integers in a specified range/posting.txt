@@ -1,0 +1,7 @@
+﻿An example of generating random integers in a desired range.
+
+The C language's old `rand` function is ungood in many ways, including that it may produce a very small number of bits per value (e.g., just 16). Modern C++ code should instead use the facilities of the `<random>` header,  introduced in C++11.
+
+The `# ifdef` at the start of this code attempts to issue a helpful warning if the compiler is old MinGW g++, which had less than complete support for `<random>`. With new compilers that checking and warning is not very important. But I left it in for completeness, it's worth knowing about such compiler issues.
+
+https://github.com/alf-p-steinbach/basic-cpp-examples/blob/master/007%20random%20integers%20in%20a%20specified%20range/random-numbers.cpp
