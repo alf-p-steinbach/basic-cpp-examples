@@ -4,8 +4,8 @@
 
 namespace app {
     using   my::stream_io::input, my::stream_io::input_int;
-    using   std::cout, std::endl, std::flush,   // <iostream>
-            std::string;                        // <string>
+    using   std::cin, std::cout, std::endl, std::flush, // <iostream>
+            std::string;                                // <string>
             
     auto&   out     = cout;
     string  name    = "Nomen Nescio";
@@ -37,7 +37,9 @@ namespace app {
             switch( choice ) {
                 case 1:     on_cmd_new_name();  break;
                 case 2:     on_cmd_exit();  return;
-                default:    out << "Oh, I only understand integers 1 and 2." << endl;
+                default:
+                    if( cin.fail() ) { return; }    // Failure mode, no more input.
+                    out << "Oh, I only understand integers 1 and 2." << endl;
             }
             cout << endl;
         }
