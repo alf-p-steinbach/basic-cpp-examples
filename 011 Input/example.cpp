@@ -1,13 +1,11 @@
 #include "stream_input.hpp"
-
 #include <iostream>
 #include <string>
 
 namespace app {
-    namespace  io = my::stream_io;
-    using   io::input, io::input_int;
-    using   std::cout, std::endl, std::flush,
-            std::string;
+    using   my::stream_io::input, my::stream_io::input_int;
+    using   std::cout, std::endl, std::flush,   // <iostream>
+            std::string;                        // <string>
             
     auto&   out     = cout;
     string  name    = "Nomen Nescio";
@@ -15,7 +13,7 @@ namespace app {
     void on_cmd_new_name()
     {
         out << "New name? ";
-        name = input();
+        name = input();     // TODO: handle empty line, leading and trailing spaces.
     }
 
     void on_cmd_exit()
@@ -33,14 +31,14 @@ namespace app {
 
     void run()
     {
-        for( bool finished = false; not finished; ) {
+        for( bool finished = false; not finished; finished or (out << endl) ) {
             show_menu();
-            switch( input_int( "? " ).value_or( -1 ) ) {
+            const int choice = input_int( "? " ).value_or( -1 );
+            switch( choice ) {
                 case 1:     on_cmd_new_name();  break;
                 case 2:     on_cmd_exit();  finished = true;  break;
-                default:    cout << "Oh, I only understand integers 1 and 2." << endl;
+                default:    out << "Oh, I only understand integers 1 and 2." << endl;
             }
-            if( not finished ) { cout << endl; }
         }
     }
 }  // namespace app
