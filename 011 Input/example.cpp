@@ -1,4 +1,4 @@
-#include "stream_input.hpp"
+﻿#include "stream_input.hpp"
 #include <iostream>
 #include <string>
 

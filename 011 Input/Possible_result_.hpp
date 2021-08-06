@@ -1,4 +1,4 @@
-#include "fail.hpp"
+﻿#include "fail.hpp"
 
 #include <exception>        // std::(exception_ptr, rethrow_exception)
 #include <optional>         // std::optional
