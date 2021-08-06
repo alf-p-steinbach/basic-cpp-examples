@@ -1,0 +1,9 @@
+It happens that `std::getline` does not stop and input a fresh line of text as one intended it to.
+
+What happens instead, internally in the program, is that `getline` just consumes some characters that are left in the input buffer from some earlier input operation such as `cin >> an_int`. Often this leftover text is just a single newline character. It can be annoying.
+
+A good solution is to use `std::getline` for all input. I.e. don't use the `>>` formatted input operation. Where you need a number just convert an inputted line to number, for example via `std::stoi`.
+
+To make this approach super-easy one can define functions such as `input()` (of a whole line) and `input_int`, that deal with possible exceptions from e.g. `std::stoi`, and one can then reuse these functions in new programs…
+
+Still, for robust code it's a good idea to include a `try`-`catch` in `main`, and the full example in the screenshots illustrates this. The full source code is available as text at (https://github.com/alf-p-steinbach/basic-cpp-examples/tree/master/011%20Input).
