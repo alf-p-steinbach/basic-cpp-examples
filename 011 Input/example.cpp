@@ -31,14 +31,15 @@ namespace app {
 
     void run()
     {
-        for( bool finished = false; not finished; finished or (out << endl) ) {
+        for( ;; ) {
             show_menu();
             const int choice = input_int( "? " ).value_or( -1 );
             switch( choice ) {
                 case 1:     on_cmd_new_name();  break;
-                case 2:     on_cmd_exit();  finished = true;  break;
+                case 2:     on_cmd_exit();  return;
                 default:    out << "Oh, I only understand integers 1 and 2." << endl;
             }
+            cout << endl;
         }
     }
 }  // namespace app

@@ -1,10 +1,8 @@
+#include "fail.hpp"
+
 #include <exception>        // std::(exception_ptr, rethrow_exception)
 #include <optional>         // std::optional
-#include <string>           // std::string
-#include <stdexcept>        // std::runtime_error
 #include <utility>          // std::move, std::swap
-
-#define FAIL( s ) my::failure_handling::fail( std::string() + __func__ + " - " + s )
 
 namespace my::failure_handling {
     using   std::current_exception, std::exception_ptr, std::rethrow_exception, // <exception>
@@ -12,9 +10,6 @@ namespace my::failure_handling {
             std::string,                            // <string>
             std::exception, std::runtime_error,     // <stdexcept>
             std::exchange, std::move, std::swap;    // <utility>
-
-    inline auto hopefully( const bool expr ) -> bool { return expr; }
-    inline auto fail( const string& s ) -> bool { throw runtime_error( s ); }
 
     template< class Value >
     class Possible_result_
@@ -36,9 +31,7 @@ namespace my::failure_handling {
 
         Possible_result_( const exception& x ):
             Possible_result_()
-        {
-            try{ throw x; } catch( ... ) { m_exception = current_exception(); }
-        }
+        { try{ throw x; } catch( ... ) { m_exception = current_exception(); } }
 
         Possible_result_( const Possible_result_& other ) = default;
         Possible_result_( Possible_result_&& other ) = default;
