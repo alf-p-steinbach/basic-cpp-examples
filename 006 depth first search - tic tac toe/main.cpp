@@ -122,6 +122,7 @@ namespace ttt {
     {
         assert( state.n_moves() < size*size );
         auto result = Scored_move{ Position( -1 ), -999 };
+
         for( auto pos = Position( 0 ); pos < size*size; advance( pos ) ) {
             if( state.cell_value( pos ) == Symbol::none ) {
                 state.set_cell_value( pos, player_symbols[player] );
