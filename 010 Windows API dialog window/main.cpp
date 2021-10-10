@@ -46,9 +46,3 @@ auto startup() -> int
     ::DialogBoxIndirect( g::h_instance, &dialog::spec(), HWND(), &dialog::event_callback );
     return EXIT_SUCCESS;
 }
-
-#ifndef MSVC_GUI_APP
-    auto main() -> int { return startup(); }
-#else
-    auto WINAPI WinMain( HINSTANCE, HINSTANCE, char*, int ) -> int { return startup(); }
-#endif
