@@ -1,6 +1,6 @@
 #pragma once
 #ifdef UNICODE
-#   error "The UNICODE preprocessor symbol should not be defined for an UTF-18-based application."
+#   error "The UNICODE preprocessor symbol should not be defined for an UTF-8-based application."
 #   include <stop-compilation>
 #endif
 
